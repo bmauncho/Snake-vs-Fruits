@@ -41,7 +41,7 @@ public class SnakeMovement : MonoBehaviour
         {
             Vector3 point = Pos_History[Mathf.Min(index * gap,Pos_History.Count-1)];
             Vector3 move_Dir = point - body.transform.position;
-            Vector3 smoothMove = Vector3.Lerp(body.transform.position,move_Dir,BodySpeed);
+            Vector3 smoothMove = Vector3.Lerp(body.transform.position,move_Dir,5f*Time.deltaTime);
             body.transform.position += move_Dir * BodySpeed * Time.deltaTime;
             body.transform.LookAt(point);
             index++;
