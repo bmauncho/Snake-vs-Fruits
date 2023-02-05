@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 634768081}
     m_Modifications:
+    - target: {fileID: 8170153791668043265, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+      propertyPath: axisOptions
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8170153791668043268, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -308,6 +312,17 @@ Transform:
   m_Father: {fileID: 1004649206}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &620279545 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8170153791668043265, guid: 0d230cc8be529a542a08cb878ab14b18, type: 3}
+  m_PrefabInstance: {fileID: 191569405}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a47f546fc70ec8428172694e78e4288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &621444298
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,10 +457,12 @@ MonoBehaviour:
   bodyParts: 0
   BodyParts: []
   BodyPrefab: {fileID: 6088144849915927145, guid: d399c19fc0edbe24bac96c187f674ef1, type: 3}
-  TailPrefab: {fileID: 1340360165}
+  TailPrefab: {fileID: 2207912801758058378, guid: 7fd96ef60074450499853d5071a3d557, type: 3}
   gap: 5
   BodySpeed: 5
   parent: {fileID: 1340360166}
+  _joystick: {fileID: 620279545}
+  IsMoving: 1
 --- !u!1 &940015181
 GameObject:
   m_ObjectHideFlags: 0
