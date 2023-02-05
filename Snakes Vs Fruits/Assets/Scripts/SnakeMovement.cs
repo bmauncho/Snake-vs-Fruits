@@ -8,7 +8,7 @@ public class SnakeMovement : MonoBehaviour
     public float steerSpeed = 100f;
     public int bodyParts;
     public List<GameObject> BodyParts = new List<GameObject>();
-    private List<Vector3> Pos_History = new List<Vector3>();
+    public List<Vector3> Pos_History = new List<Vector3>();
     public GameObject BodyPrefab;
     public GameObject TailPrefab;
     public int gap = 10;
@@ -26,7 +26,8 @@ public class SnakeMovement : MonoBehaviour
         GrowSnake();
         GrowSnake();
         GrowSnake();
-        //bodyParts = BodyParts.Count;
+        AddTail();
+        bodyParts = BodyParts.Count;
     }
 
     // Update is called once per frame
@@ -49,23 +50,29 @@ public class SnakeMovement : MonoBehaviour
         transform.position += transform.forward * moveSpeed * Time.deltaTime;
         Pos_History.Insert(0,transform.position);
 
-            int index = 0;
-            foreach(var body in BodyParts)
-            {
-                Vector3 point = Pos_History[Mathf.Min(index * gap,Pos_History.Count-1)];
-                Vector3 move_Dir = point - body.transform.position;
-                Vector3 smoothMove = Vector3.Lerp(body.transform.position,move_Dir,5f*Time.deltaTime);
-                body.transform.position += move_Dir * BodySpeed * Time.deltaTime;
-                body.transform.LookAt(point);
-                index++;
-            }
-        
+        int index = 0;
+        foreach(var body in BodyParts)
+        {
+            Vector3 point = Pos_History[Mathf.Min(index * gap,Pos_History.Count-1)];
+            Vector3 move_Dir = point - body.transform.position;
+            Vector3 smoothMove = Vector3.Lerp(body.transform.position,move_Dir,5f*Time.deltaTime);
+            body.transform.position += move_Dir * BodySpeed * Time.deltaTime;
+            body.transform.LookAt(point);
+            index++;
+        }
     }
 
     public void GrowSnake()
     {
         GameObject body = Instantiate(BodyPrefab);
         BodyParts.Add(body);
-        body.transform.SetParent(parent);   
+        body.transform.SetParent(parent);    
+    }
+
+    public void AddTail()
+    {
+        GameObject tail = Instantiate(TailPrefab);
+        BodyParts.Add(tail);
+        tail.transform.SetParent(parent);
     }
 }
